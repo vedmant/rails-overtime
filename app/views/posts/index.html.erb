@@ -4,7 +4,14 @@
   <% @posts.each do |post| %>
      <div class="panel panel-default">
        <div class="panel-heading"><%= post.date.strftime '%m/%d/%Y' %></div>
-       <div class="panel-body"><%= post.rationale %></div>
+       <div class="panel-body">
+         <p>
+           <%= post.rationale %>
+         </p>
+         <div>
+           <%= link_to 'Show', post %>
+         </div>
+       </div>
      </div>
   <% end %>
 

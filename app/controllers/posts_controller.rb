@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @posts = Post.all
+    @posts = Post.last(10).reverse
   end
 
   def new
