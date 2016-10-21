@@ -11,3 +11,5 @@
 end
 
 puts '100 Posts have been created'
+
+User.create email: 'vedmant@gmail.com', first_name: 'A', last_name: 'V', password: 123456
