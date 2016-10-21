@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_action :set_post, only: [:show]
 
   def index
-    @posts = Post.last(10).reverse
+    @posts = Post.includes(:user).all
   end
 
   def new
