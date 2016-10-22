@@ -16,6 +16,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'meta_request'
+  gem 'factory_girl_rails'
 end
 
 group :development do
