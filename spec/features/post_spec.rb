@@ -6,6 +6,7 @@ describe 'navigate' do
     login_as(@user, :scope => :user)
   end
 
+
   describe 'index' do
     before do
       visit posts_path
@@ -27,10 +28,22 @@ describe 'navigate' do
     end
   end
 
+
+  describe 'new' do
+
+    it 'has a link from the homepage' do
+      visit root_path
+      click_link('new_post_form_nav')
+    end
+
+  end
+
+
   describe 'creation' do
     before do
       visit new_post_path
     end
+
     it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
@@ -51,6 +64,7 @@ describe 'navigate' do
       expect(User.last.posts.last.rationale).to eq('User_Association')
     end
   end
+
 
   describe 'edit' do
     before do
