@@ -1,5 +1,7 @@
-<%= bootstrap_form_for @post do |f| %>
-   <%= f.date_field :date%>
-   <%= f.text_area :rationale %>
-   <%= f.primary 'Save' %>
+<%= bootstrap_form_for @post, layout: :horizontal do |f| %>
+   <%= f.date_field :date %>
+   <%= f.text_area :rationale, rows: 5 %>
+   <div class="text-right">
+      <%= f.primary 'Save' %>
+   </div>
 <% end %>
