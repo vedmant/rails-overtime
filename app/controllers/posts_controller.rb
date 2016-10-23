@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: 'Your post was created successfully'
     else
+      flash.now[:alert] = @post.errors.full_messages.join('<br>').html_safe
       render :new
     end
   end
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post, notice: 'Your post was edited successfully'
     else
+      flash.now[:alert] = @post.errors.full_messages.join('<br>').html_safe
       render :edit
     end
   end
