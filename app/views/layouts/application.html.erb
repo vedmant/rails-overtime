@@ -9,8 +9,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/nav' %>
+  <%= render 'layouts/nav' %>
 
-    <%= yield %>
+  <%= yield %>
+
+  <%= toastr_flash %>
   </body>
 </html>
