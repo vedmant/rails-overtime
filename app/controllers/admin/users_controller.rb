@@ -15,5 +15,10 @@ module Admin
 
     # See https://administrate-docs.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+      params[:user].delete(:password) if params[:user][:password].blank?
+      super
+    end
   end
 end
