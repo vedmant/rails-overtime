@@ -20,5 +20,6 @@ module Admin
       params[:user].delete(:password) if params[:user][:password].blank?
       super
     end
+
   end
 end
