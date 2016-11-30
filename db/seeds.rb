@@ -12,7 +12,7 @@ puts '1 User has been created'
 
 admin_user = AdminUser.create! email: 'admin@test.com', password: '123456', first_name: 'Jordan', last_name: 'Hudgens'
 
-puts '1 User has been created'
+puts '1 AdminUser has been created'
 
 100.times do |post|1
   Post.create date: Date.today, rationale: "#{post} rationale content", user: user
