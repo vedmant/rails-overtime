@@ -24,7 +24,7 @@
             <% if not current_user %>
               <li><%= link_to 'Sign In', new_user_session_path %></li>
             <% else %>
-              <li><%= link_to 'TODO: Admin Dashboard', root_path %></li>
+              <li><%= link_to 'Admin Dashboard', admin_root_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <% end %>

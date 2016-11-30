@@ -1,6 +1,11 @@
 <%= bootstrap_form_for @post, layout: :horizontal do |f| %>
    <%= f.date_field :date %>
    <%= f.text_area :rationale, rows: 5 %>
+   <%= f.form_group :status, label: { text: 'Status' } do %>
+      <%= f.radio_button :status, 'submitted', label: 'Submitted', checked: true %>
+      <%= f.radio_button :status, 'approved', label: 'Approved' %>
+      <%= f.radio_button :status, 'rejected', label: 'Rejected' %>
+   <% end %>
    <div class="text-right">
       <%= f.primary 'Save' %>
    </div>
