@@ -12,6 +12,7 @@ module ApplicationHelper
       text = "<script>toastr.#{type}('#{escape_javascript(message)}');</script>"
       flash_messages << text.html_safe if message
     end
+    '<script>toastr.options = {positionClass: "toast-top-left"}</script>'.html_safe +
     flash_messages.join("\n").html_safe
   end
 
