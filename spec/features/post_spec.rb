@@ -21,10 +21,21 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryGirl.build_stubbed :post
-      post2 = FactoryGirl.build_stubbed :second_post
+      post1 = FactoryGirl.create :post, user: @user
+      post2 = FactoryGirl.create :second_post, user: @user
       visit posts_path
-      expect(page).to have_content(/Rationale|content/)
+      expect(page).to have_content(/Some Rationale/)
+    end
+
+    it 'has a scope so that only post creators can see their posts' do
+      other_user = FactoryGirl.create :non_authorized_user
+      post1 = FactoryGirl.create :post, user: @user
+      post2 = FactoryGirl.create :second_post, user: @user
+      post_from_other_user = FactoryGirl.create :post_from_other_user, user: other_user
+
+      visit posts_path
+
+      expect(page).to_not have_content(/Post from other user/)
     end
   end
 
