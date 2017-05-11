@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 describe 'navigate' do
-  before do
-    @user = FactoryGirl.create :user
-    login_as(@user, :scope => :user)
-  end
+  let(:user) { FactoryGirl.create :user }
+  let(:post) { FactoryGirl.create :post, user: user }
 
+  before do
+    login_as(user, :scope => :user)
+  end
 
   describe 'index' do
     before do
@@ -21,16 +22,14 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryGirl.create :post, user: @user
-      post2 = FactoryGirl.create :second_post, user: @user
+      post1 = FactoryGirl.create :post, user: user
+      post2 = FactoryGirl.create :second_post, user: user
       visit posts_path
       expect(page).to have_content(/Some Rationale/)
     end
 
     it 'has a scope so that only post creators can see their posts' do
       other_user = FactoryGirl.create :non_authorized_user
-      post1 = FactoryGirl.create :post, user: @user
-      post2 = FactoryGirl.create :second_post, user: @user
       post_from_other_user = FactoryGirl.create :post_from_other_user, user: other_user
 
       visit posts_path
@@ -54,9 +53,9 @@ describe 'navigate' do
   describe 'delete' do
 
     it 'can be deleted' do
-      @post = FactoryGirl.create :post, user: @user
+      post_to_delete = FactoryGirl.create :post, user: user
       visit posts_path
-      click_link("delete_post_#{@post.id}_from_index")
+      click_link("delete_post_#{post_to_delete.id}_from_index")
       expect(page.status_code).to eq(200)
     end
 
@@ -91,12 +90,8 @@ describe 'navigate' do
 
 
   describe 'edit' do
-    before do
-      @post = FactoryGirl.create :post, user: @user
-    end
-
     it 'can be edited' do
-      visit edit_post_path(@post)
+      visit edit_post_path(post)
 
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Edited content'
@@ -110,7 +105,7 @@ describe 'navigate' do
       non_authorized_user = FactoryGirl.create(:non_authorized_user)
       login_as(non_authorized_user)
 
-      visit edit_post_path(@post)
+      visit edit_post_path(post)
 
       expect(current_path).to eq(root_path)
     end
