@@ -11,4 +11,12 @@ class User < ApplicationRecord
   def full_name
     last_name.upcase + ', ' + first_name.upcase
   end
+
+  def admin_types
+    ['AdminUser']
+  end
+
+  def is_admin?
+    admin_types.include?(type)
+  end
 end
