@@ -1,5 +1,6 @@
 <%= bootstrap_form_for @post, layout: :horizontal do |f| %>
    <%= f.date_field :date %>
+   <%= f.text_field :overtime_request %>
    <%= f.text_area :rationale, rows: 5 %>
 
    <% if current_user.type == 'AdminUser' %>
