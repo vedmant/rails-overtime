@@ -1,11 +1,33 @@
 
 <div class="container">
 
-  <h1><%= @post.rationale %></h1>
+  <h2><%= @post.rationale %></h2>
   <hr>
 
-  <p><%= @post.date %></p>
+  <div class="well">
 
-  <%= @post.inspect %>
+    <div class="row">
+      <div class="col-sm-3 text-right"><label>Overtime Amount Requested:</label></div>
+      <div class="col-sm-9"><%= @post.overtime_request %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 text-right"><label>Employee:</label></div>
+      <div class="col-sm-9"><%= @post.user.full_name %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 text-right"><label>Date:</label></div>
+      <div class="col-sm-9"><%= @post.date %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 text-right"><label>Current State of Approval:</label></div>
+      <div class="col-sm-9"><%= @post.status.capitalize %></div>
+    </div>
+
+  </div>
+
+  <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' if policy(@post).update? %>
 
 </div>
