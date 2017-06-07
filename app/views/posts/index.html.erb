@@ -2,6 +2,8 @@
   <h1>Posts</h1>
   <hr>
 
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+
   <table class="table table-striped table-hover">
     <thead>
     <tr>
@@ -19,5 +21,7 @@
     <%= render @posts %>
     </tbody>
   </table>
+
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 
 </div>
