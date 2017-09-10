@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170524190510) do
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date     "date"
     t.text     "rationale",        limit: 65535
     t.datetime "created_at",                                                             null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170524190510) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  limit: 191, default: "", null: false
     t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token",   limit: 191
