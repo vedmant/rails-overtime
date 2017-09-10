@@ -38,3 +38,4 @@ gem 'pundit'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'twilio-ruby'
+gem 'dotenv-rails', groups: [:development, :test]
