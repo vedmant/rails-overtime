@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+      models:
+        user:
+          one: User
+          other: Users
+        admin_user:
+          one: Admin User
+          other: Admin Users

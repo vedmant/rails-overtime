@@ -66,7 +66,6 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :first_name,
     :last_name,
     :phone,
-    :type,
   ].freeze
 
   # Overwrite this method to customize how admin users are displayed
